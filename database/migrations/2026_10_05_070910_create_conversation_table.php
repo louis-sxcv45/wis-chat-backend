@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('conversation', function (Blueprint $table) {
+            $table->id('id_conversation');
+            $table->enum('type', ['personal', 'group'])->default('personal');
+            $table->string('name_group')->nullable();
+            $table->string('photo_group')->nullable();
+            $table->timestamp('created_at')->useCurrent();
+
+            $table->timestamp('last_message_at')->nullable()->index();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('conversation');
+    }
+};
