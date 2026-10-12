@@ -29,7 +29,7 @@ services:
     container_name: laravel-nginx
 
     ports:
-      - "8080:80"
+      - "127.0.0.1:8080:80"
 
     volumes:
       - storage:/var/www/html/storage
