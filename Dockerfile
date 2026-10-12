@@ -22,10 +22,10 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-COPY composer.json composer.lock ./
-RUN composer install --prefer-dist --no-interaction --optimize-autoloader
-
 COPY . .
+
+RUN composer install --prefer-dist --no-interaction --no-scripts --optimize-autoloader
+
 RUN composer dump-autoload --optimize \
     && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
