@@ -25,7 +25,7 @@ COPY composer.json composer.lock ./
 RUN composer install --prefer-dist --no-interaction --optimize-autoloader
 
 COPY . .
-RUN composer dump-autoload --optimize
+RUN composer dump-autoload --optimize \
     && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
