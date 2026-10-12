@@ -1,5 +1,6 @@
 services:
   app:
+    image: wis-chat-app
     build:
       context: .
       dockerfile: Dockerfile
@@ -60,7 +61,7 @@ services:
       - app-network
 
   reverb:
-    image: wis-reverb
+    image: wis-chat-app
 
     container_name: laravel-reverb
 
@@ -77,7 +78,7 @@ services:
     restart: unless-stopped
   
   queue:
-    image: wis-queue
+    image: wis-chat-app
 
     container_name: laravel-queue
 
