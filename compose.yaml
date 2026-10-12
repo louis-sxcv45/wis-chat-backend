@@ -59,9 +59,6 @@ services:
     networks:
       - app-network
 
-    ports:
-      - "3306:3306"
-
   reverb:
     image: wis-reverb
 
