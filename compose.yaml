@@ -63,7 +63,7 @@ services:
       - "3306:3306"
 
   reverb:
-    build: .
+    image: wis-reverb
 
     container_name: laravel-reverb
 
@@ -80,7 +80,7 @@ services:
     restart: unless-stopped
   
   queue:
-    build: .
+    image: wis-queue
 
     container_name: laravel-queue
 
@@ -103,4 +103,6 @@ networks:
 
 volumes:
   dbdata:
+    driver: local
+  storage:
     driver: local
